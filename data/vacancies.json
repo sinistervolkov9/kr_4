@@ -1,0 +1,37 @@
+[
+  {
+    "name": "Тракторист-машинист фронтального погрузчика",
+    "salary": 100000,
+    "link": "https://hh.ru/vacancy/90380566",
+    "region": "Брянск",
+    "company": "РемСпецТех32"
+  },
+  {
+    "name": "Тракторист на уборку территории",
+    "salary": 90000,
+    "link": "https://hh.ru/vacancy/91397559",
+    "region": "Казань",
+    "company": "Континент"
+  },
+  {
+    "name": "Тракторист-машинист сельскохозяйственного производства/комбайнер",
+    "salary": 100000,
+    "link": "https://hh.ru/vacancy/91445296",
+    "region": "Барнаул",
+    "company": "Чеботарева Наталия Александровна"
+  },
+  {
+    "name": "Тракторист-машинист",
+    "salary": 0,
+    "link": "https://balashiha.superjob.ru/vakansii/traktorist-mashinist-48270538.html",
+    "region": "Балашиха",
+    "company": "ГБУ Московской области \" Дирекция экологических проектов\""
+  },
+  {
+    "name": "Тракторист / Водитель погрузчика на производство",
+    "salary": 50000,
+    "link": "https://www.superjob.ru/vakansii/traktorist-46816183.html",
+    "region": "Москва",
+    "company": "Новая Заря"
+  }
+]
