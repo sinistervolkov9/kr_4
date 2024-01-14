@@ -2,8 +2,7 @@ from settings import DATA_PATH, DATA_PATH_HH, DATA_PATH_SJ
 from api import HHAPI, SuperjobAPI
 from interaction import Interaction
 from record import Record
-from conversion import HHConversion, SJConversion
-from print_helper import PrintHelper
+from converter import HHConversion, SJConversion, PrintHelper
 
 
 class Main:
@@ -24,7 +23,7 @@ class Main:
         self.printhelper = PrintHelper()
 
     def run(self):
-        keyword = self.interaction.interactive()
+        keyword = self.interaction.interactive_start()
         if self.interaction.is_hh_search is True:
             vacancies = self.request_hh.get_request(keyword)
             self.record_hh.add_to_json(vacancies)
@@ -38,8 +37,8 @@ class Main:
         self.record_file.create_json(self.hh_vac_list, self.sj_vac_list)
 
         data = self.record_file.get_data()
-        self.printhelper.to_output(data)
-        self.interaction.interactive_2()
+        self.printhelper.base_print(data)
+        self.interaction.interactive_run()
 
 
 if __name__ == '__main__':

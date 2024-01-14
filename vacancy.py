@@ -18,8 +18,8 @@ class Vacancy:
         return {"name": self.name, "salary": self.salary, "link": self.link, "region": self.region,
                 "company": self.company}
 
-    def __str__(self): # А зачем это?
-        return f"{self.name};  зарплата: от {self.salary}; ссылка: {self.link}; город: {self.region}; компания: {self.company}"
+    def __str__(self):  # А зачем это?
+        return f"{self.name};  зарплата: {self.salary}; ссылка: {self.link}; город: {self.region}; компания: {self.company}"
 
 
     # Класс должен поддерживать методы сравнения вакансий между собой по зарплате
