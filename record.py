@@ -13,23 +13,24 @@ class Record:
     def __init__(self, data):
         self.data = data
 
-        #self.remove_data()
-        self.create_json()
+        #self.create_json()
 
-    def create_json(self):
+    def create_json(self, list_1, list_2):
+        # Создает общий файл для вакансий. А зачем? Чтобы парсить потом из него
+        self.vacancy_list.extend(list_1)
+        self.vacancy_list.extend(list_2)
+
         with open(self.data, "w", encoding="utf-8") as file:
             json.dump(self.vacancy_list, file, ensure_ascii=False)
 
-    def to_add_data(self, vacancy):
+    def add_to_json(self, vacancies):
         """
         Добавление вакансий (и данных о них) в файл
         :return:
         """
         # Принимает список, и записывает его в json-файл
-        self.vacancy_list.append(vacancy)
-        #self.create_json()
-        # with open(self.data, "w", encoding="utf-8") as file:
-        #     json.dump(self.item, file, ensure_ascii=False)
+        with open(self.data, "w", encoding="utf-8") as file:
+            json.dump(vacancies, file, ensure_ascii=False)
 
     def get_data(self):
         """
@@ -48,6 +49,4 @@ class Record:
         """
         pass
         # очистка файла полностью
-        #self.vacancy_list = []
-        #self.create_json()
-        # очистка по id, введенным пользователем
+        # очистка по номеру строки, введенной пользователем

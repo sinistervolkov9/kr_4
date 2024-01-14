@@ -1,25 +1,26 @@
 from abc import ABC, abstractmethod
 from vacancy import Vacancy
-from record import Record
 
 
 class Conversion(ABC):
+    somelist_1 = []
+    somelist_2 = []
     @abstractmethod
-    def preparing_for_json(self, items, record, resource_list):
+    def for_print(self, data):
         pass
 
 
 class HHConversion(Conversion):
-    def preparing_for_json(self, items, record, resource_list):
-        for i in items:
-            vacancy = Vacancy(i["name"], i["salary"]["from"], i["alternate_url"], i["area"]["name"], i["employer"]["name"])
-            record.to_add_data(vacancy.to_json())
-        resource_list.append(record)
+    def for_print(self, data):
+        for i in data:
+            vacancy = Vacancy(i["name"], i["salary"], i["alternate_url"], i["area"]["name"], i["employer"]["name"])
+            self.somelist_1.append(vacancy.to_json())
+        return self.somelist_1
 
 
 class SJConversion(Conversion):
-    def preparing_for_json(self, items, record, resource_list):
-        for i in items:
+    def for_print(self, data):
+        for i in data:
             vacancy = Vacancy(i["profession"], i["payment_from"], i["link"], i["town"]["title"], i["firm_name"])
-            record.to_add_data(vacancy.to_json())
-        resource_list.append(record)
+            self.somelist_2.append(vacancy.to_json())
+        return self.somelist_2

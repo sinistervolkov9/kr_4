@@ -9,3 +9,5 @@ SUPERJOB_API_KEY = SUPERJOB_API_KEY.replace(" ", "").replace("\t", "").replace("
 
 ROOT_PATH = Path(__file__).parent
 DATA_PATH = ROOT_PATH.joinpath("data", "vacancies.json")
+DATA_PATH_HH = ROOT_PATH.joinpath("data", "vacancies_hh.json")
+DATA_PATH_SJ = ROOT_PATH.joinpath("data", "vacancies_sj.json")

@@ -1,40 +1,45 @@
-from conversion import HHConversion, SJConversion
-from interaction import Interaction
-from settings import DATA_PATH
+from settings import DATA_PATH, DATA_PATH_HH, DATA_PATH_SJ
 from api import HHAPI, SuperjobAPI
+from interaction import Interaction
 from record import Record
+from conversion import HHConversion, SJConversion
+from print_helper import PrintHelper
 
 
 class Main:
     def __init__(self):
         self.new_search()
-
-        self.hh_search = True
-        self.sj_search = True
-        self.resource_list = []
+        self.hh_vac_list = []
+        self.sj_vac_list = []
 
     def new_search(self):
         self.interaction = Interaction()
         self.request_hh = HHAPI()
         self.request_sj = SuperjobAPI()
-        self.record_hh = Record(DATA_PATH)
-        self.record_sj = Record(DATA_PATH)
-        self.conversion_hh = HHConversion()
-        self.conversion_sj = SJConversion()
+        self.record_file = Record(DATA_PATH)
+        self.record_hh = Record(DATA_PATH_HH)
+        self.record_sj = Record(DATA_PATH_SJ)
+        self.hhconversion = HHConversion()
+        self.sjconversion = SJConversion()
+        self.printhelper = PrintHelper()
 
     def run(self):
         keyword = self.interaction.interactive()
-
         if self.interaction.is_hh_search is True:
-            items = self.request_hh.get_request(keyword)
-            self.conversion_hh.preparing_for_json(items, self.record_hh, self.resource_list)
-
+            vacancies = self.request_hh.get_request(keyword)
+            self.record_hh.add_to_json(vacancies)
+            data = self.record_hh.get_data()
+            self.hh_vac_list = self.hhconversion.for_print(data)
         if self.interaction.is_sj_search is True:
-            items = self.request_sj.get_request(keyword)
-            self.conversion_sj.preparing_for_json(items, self.record_sj, self.resource_list)
+            vacancies = self.request_sj.get_request(keyword)
+            self.record_sj.add_to_json(vacancies)
+            data = self.record_sj.get_data()
+            self.sj_vac_list = self.sjconversion.for_print(data)
+        self.record_file.create_json(self.hh_vac_list, self.sj_vac_list)
 
-        for resource in self.resource_list:
-            resource.create_json()
+        data = self.record_file.get_data()
+        self.printhelper.to_output(data)
+        self.interaction.interactive_2()
 
 
 if __name__ == '__main__':
