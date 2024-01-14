@@ -21,23 +21,30 @@ class Interaction:
         # salary_search = input()
         # print("\nИскать в каком-то определенном регионе? Если да, то введите город, если нет, то просто нажмите Enter")
         # region_search = input()
-        print("\nНа каком ресурсе искать? Введите цифру: \n1. HeadHunter\n2. SuperJob\nЕсли это не важно, то просто нажмите Enter")
-        resource_search = str(input()).title().strip()
-        if resource_search == "1":
-            self.is_sj_search = False
-        elif resource_search == "2":
-            self.is_hh_search = False
-
-        print("\nВот что мне удалось найт:")
 
         return keyword
+        # запускай response_handler.keyword_request(keyword)
+
+    def interactive_resource_search(self):
+        print("\nНа каком ресурсе искать? Введите цифру: \n1. HeadHunter\n2. SuperJob\nЕсли это не важно, то просто нажмите Enter")
+        user_input = str(input()).title().strip()
+        print("\nВот что мне удалось найт:")
+
+        return user_input
+
+    # def interactive_check_page(self):
+    #     print(f"Чтобы перейти к следующей, нажмите Enter\nЧтобы вернуться на предыдущую, введите b")
+    #     user_input = str(input()).strip()
+    #
+    #     return user_input
 
     def interactive_run(self):
-        print(f"\nСтраница {1} из {10}\nЧтобы перейти к следующей, нажмите Enter\nЧтобы вернуться на предыдущую, введите b")
-        print(f"\nВы можете сравнить вакансии между собой. Для этого введите df (запуск скрипта)")
-        print(f"Вы можете удалить вакансию, если она вас не интересует. Для этого введите ее номер. После этого список обновится")
-        print(f"Вы можете получить топ вакансий по зарплате. Введите кол-во топа\n")
+        print(f"ENTER - перейти к следующей\nb - вернуться на предыдущую")
+        print(f"\ndf - сравнить вакансии между собой (запуск скрипта)")
+        print(f"dl - удалить вакансии, если она вас не интересуют (запуск скрипта. После этого список обновится)")
+        print(f"top - получить топ вакансий по зарплате (запуск скрипта)")
+        print(f"e - выйти\n")
 
-        user_action = str(input()).title().strip()
+        user_input = str(input()).strip()
 
-        return user_action
+        return user_input
