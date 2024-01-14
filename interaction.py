@@ -7,36 +7,19 @@
 # в описании которых есть определенные ключевые слова, например postgres, и т. п.
 
 class Interaction:
-    is_hh_search = True  # (вспомогательная для проги)
-    is_sj_search = True  # (вспомогательная для проги)
-    # Здесь настройки поведения программы
+    is_hh_search = True
+    is_sj_search = True
 
     def interactive_start(self):
         print("Привет!\nВведите ключевое слово:")
         keyword = str(input()).title().strip()
-
-        # print("Что именно искть? Введите цифру: \n1. Должность\n2. Компания\nЕсли это не важно, то просто нажмите Enter")
-        # keyword_search = input()
-        # print("\nВведите желаемую зарплату:")
-        # salary_search = input()
-        # print("\nИскать в каком-то определенном регионе? Если да, то введите город, если нет, то просто нажмите Enter")
-        # region_search = input()
-
         return keyword
-        # запускай response_handler.keyword_request(keyword)
 
     def interactive_resource_search(self):
         print("\nНа каком ресурсе искать? Введите цифру: \n1. HeadHunter\n2. SuperJob\nЕсли это не важно, то просто нажмите Enter")
         user_input = str(input()).title().strip()
         print("\nВот что мне удалось найт:")
-
         return user_input
-
-    # def interactive_check_page(self):
-    #     print(f"Чтобы перейти к следующей, нажмите Enter\nЧтобы вернуться на предыдущую, введите b")
-    #     user_input = str(input()).strip()
-    #
-    #     return user_input
 
     def interactive_run(self):
         print(f"ENTER - перейти к следующей\nb - вернуться на предыдущую")

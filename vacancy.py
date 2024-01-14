@@ -18,7 +18,7 @@ class Vacancy:
         return {"name": self.name, "salary": self.salary, "link": self.link, "region": self.region,
                 "company": self.company}
 
-    def __str__(self):  # А зачем это?
+    def __str__(self):
         return f"{self.name};  зарплата: {self.salary}; ссылка: {self.link}; город: {self.region}; компания: {self.company}"
 
 
@@ -29,21 +29,3 @@ class Vacancy:
         :return:
         """
         pass
-
-
-# class HHVacancy(Vacancy):
-#     def __init__(self, name, salary, link, description):
-#         super().__init__(name, salary, link, description)
-#         pass
-#
-#     def __str__(self):
-#         return f"HH:{self.name}, зарплата: {self.salary} руб.мес"
-#
-#
-# class SJVacancy(Vacancy):
-#     def __init__(self, name, salary, link, description):
-#         super().__init__(name, salary, link, description)
-#         pass
-#
-#     def __str__(self):
-#         return f""
