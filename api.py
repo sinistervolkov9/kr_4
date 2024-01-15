@@ -3,11 +3,11 @@ from abc import ABC, abstractmethod
 from settings import SUPERJOB_API_KEY
 
 
-# Создать абстрактный класс для работы с API сайтов с вакансиями.
 class Api(ABC):
     """
     Класс для работы с API сайтов с вакансиями.
     """
+
     @abstractmethod
     def get_request(self, keyword, per_page):
         pass
@@ -17,7 +17,8 @@ class HHAPI(Api):
     """
     Класс для работы конкретно с платформой hh.ru
     """
-    def get_request(self, keyword, per_page=10):
+
+    def get_request(self, keyword, per_page=15):
         url = "https://api.hh.ru/vacancies/"
         params = {"text": keyword, "search_field": "name", "page": 0, "per_page": per_page}
 
@@ -29,7 +30,8 @@ class SuperjobAPI(Api):
     """
     Класс для работы конкретно с платформой superjob.ru
     """
-    def get_request(self, keyword, per_page=10):
+
+    def get_request(self, keyword, per_page=15):
         url = "https://api.superjob.ru/2.0/vacancies/"
         params = {"keywords": keyword, "page": 0, "count": per_page}
 

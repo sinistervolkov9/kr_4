@@ -1,5 +1,3 @@
-# Создать класс для работы с вакансиями.
-# Обрабатывает данные
 class Vacancy:
     def __init__(self, name, salary, link, region, company):
         # Класс должен валидировать данные, которыми инициализируются его атрибуты.
@@ -19,13 +17,14 @@ class Vacancy:
                 "company": self.company}
 
     def __str__(self):
-        return f"{self.name};  зарплата: {self.salary}; ссылка: {self.link}; город: {self.region}; компания: {self.company}"
+        return f"{self.name};  зарплата: от {self.salary}; ссылка: {self.link}; город: {self.region}; компания: {self.company}"
 
+    def to_comparison(self):
+       pass
 
-    # Класс должен поддерживать методы сравнения вакансий между собой по зарплате
-    def salary_comparison(self):
+    def salary_comparison(self, other):
         """
         Сравнение вакансий по зарплате
         :return:
         """
-        pass
+        return self.salary > other.salary
