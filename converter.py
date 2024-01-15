@@ -3,11 +3,22 @@ from vacancy import Vacancy
 
 
 class Conversion(ABC):
+    """
+    Класс для преобразования данных
+    перед отправлением в json-файл
+    со всеми вакансиями
+    """
     vaclist_1 = []
     vaclist_2 = []
 
     @abstractmethod
     def for_print(self, data):
+        """
+        Метод обирает из json-файла соответствущего ресурса
+        нужные данные для дальнейшей работы с ними
+        :param data:
+        :return: list
+        """
         pass
 
 

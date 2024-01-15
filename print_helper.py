@@ -23,8 +23,8 @@ class PrintHelper:
         :return: None
         """
         vac_num = 1  # Вспомогательная
-        last = self.vac_on_page * self.page_num + 1  # Вспомогательная. Последняя выводимая вакансия
-        first = last - self.vac_on_page  # Вспомогательная. первая выводимая вакансия
+        last = self.vac_on_page * self.page_num + 1  # Вспомогательная. Последняя выводимая на странице вакансия
+        first = last - self.vac_on_page  # Вспомогательная. первая выводимая на странице вакансия
 
         for i in self.data:
             vac = Vacancy(i["name"], i["salary"], i["link"], i["region"], i["company"])
@@ -36,6 +36,11 @@ class PrintHelper:
         print(f"\nСтраница {self.page_num} из {int(self.pages)}")
 
     def top_print(self, value):
+        """
+        Вывод топа вакансий от большей к меньшей по заработной плате
+        :param value:
+        :return: None
+        """
         filtered_data = [i for i in self.data if isinstance(i["salary"], (int, float))]
         filtered_data.sort(key=lambda x: x["salary"], reverse=True)
         vac_num = 1
@@ -50,9 +55,14 @@ class PrintHelper:
             print("Зарплата некоторых вакансий неизвестна")
         self.to_return()
 
-    def comp_print(self, choice_list):  # [1, 2] -> [2, 3]
+    def comp_print(self, choice_list: list):
+        """
+        Вывод сравнения вакансий
+        :param choice_list: list
+        :return: None
+        """
         if len(choice_list) < 2:
-            print("Для сравнения нужно указать хотя бы две вакансии\n")
+            print("Для сравнения нужно указать хотя бы две вакансии")
         else:
             choiced_vac_list = []
             result = ""
@@ -74,7 +84,7 @@ class PrintHelper:
                     else:
                         result += "?зарплата одной из вакансий неизвестна? "
                     choiced_vac_list.append(first)
-                    result += f"{second['name']} - {second['salary']} - {second['region']}\n"
+                    result += f"{second['name']} - {second['salary']} - {second['region']}"
                     choiced_vac_list.append(second)
 
             print(result)
@@ -82,16 +92,28 @@ class PrintHelper:
         self.to_return()
 
     def next_page(self):
+        """
+        Перехода на след. страницу с вакансиями
+        :return: None
+        """
         if self.page_num != self.pages:
             self.page_num += 1
         self.base_print()
 
     def previous_page(self):
+        """
+        Функция для перехода на пред. страницу с вакансиями
+        :return: None
+        """
         if self.page_num != 1:
             self.page_num -= 1
         self.base_print()
 
     def comparison_vac(self):
+        """
+        Ввод списка вакансий для сравнения
+        :return: None
+        """
         choice_list = []
         print("Введите номера вакансий, которые хотите сравнить (через пробел)")
         user_choice = input().split()
@@ -107,6 +129,10 @@ class PrintHelper:
         self.comp_print(choice_list)
 
     def top_vac(self):
+        """
+        Ввод числа топа вакансий
+        :return: None
+        """
         print("Введите значение, сколько вакансий отобразить")
         user_choice = input().strip()
         if isinstance(user_choice, int) or user_choice.isdigit():
@@ -116,6 +142,10 @@ class PrintHelper:
             self.base_print()
 
     def remove_vac(self):
+        """
+        Ввод списка вакансий для удаления
+        :return: list
+        """
         choice_list = []
         print("Введите номера вакансий, которые хотите удалить (через пробел)")
         user_choice = input().split()
@@ -128,10 +158,18 @@ class PrintHelper:
         return choice_list
 
     def no_comand(self):
+        """
+        Если пользователем введена неизвестная программа
+        :return: None
+        """
         print("Такой команды нет\n")
         self.base_print()
 
     def to_return(self):
+        """
+        Вспомогательная для возвращения пользователя к списку вакансий
+        :return: None
+        """
         print(f"\nЧтобы вернуться, нажмите ENTER или введите любое значение")
         input()
         self.base_print()

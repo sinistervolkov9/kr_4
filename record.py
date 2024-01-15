@@ -2,11 +2,22 @@ import json
 
 
 class Record:
+    """
+    Класс для работы с json-файлами
+    """
+
     def __init__(self, data):
         self.data = data
         self.vacancy_list = []
 
     def create_json(self, list_1, list_2):
+        """
+        Создает json-файл с данными
+        из всех ресурсов, приведенных к одному виду
+        :param list_1: list
+        :param list_2: list
+        :return: None
+        """
         self.vacancy_list.extend(list_1)
         self.vacancy_list.extend(list_2)
 
@@ -17,14 +28,14 @@ class Record:
         """
         Добавление вакансий (и данных о них) в файл
         Принимает список, и записывает его в json-файл
-        :return:
+        :return: None
         """
         with open(self.data, "w", encoding="utf-8") as file:
             json.dump(vacancies, file, ensure_ascii=False)
 
     def get_data(self):
         """
-        Получение данных из файла по указанным критериям
+        Получение данных из файла
         :return:
         """
         with open(self.data, 'r', encoding="utf-8") as file:
@@ -33,9 +44,9 @@ class Record:
 
     def remove_data(self, rem_list: list):
         """
-        Удаления информации о вакансиях (и об их данных) из файла
-        (Очистка по номеру строки, введенной пользователем)
-        :return:
+        Удаления информации о вакансиях из файла
+        по списку их номеров
+        :return: None
         """
         num = 0
         removed_list = []

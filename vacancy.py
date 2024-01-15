@@ -1,11 +1,8 @@
 class Vacancy:
+    """
+    Класса для корректного вывода с данными о вакансии
+    """
     def __init__(self, name, salary, link, region, company):
-        # Класс должен валидировать данные, которыми инициализируются его атрибуты.
-        # if not isinstance(name, str): # or not isinstance(salary, int):
-        #     raise TypeError("Неверный тип данных")
-        # if not name or salary < 0:
-        #     raise ValueError("Неверное значение данных")
-
         self.name = name
         self.salary = salary
         self.link = link
@@ -13,18 +10,19 @@ class Vacancy:
         self.company = company
 
     def to_json(self):
+        """
+        Подготовка данных вакансии к json-формату
+        :return: dict
+        """
         return {"name": self.name, "salary": self.salary, "link": self.link, "region": self.region,
                 "company": self.company}
 
     def __str__(self):
         return f"{self.name};  зарплата: от {self.salary}; ссылка: {self.link}; город: {self.region}; компания: {self.company}"
 
-    def to_comparison(self):
-       pass
-
     def salary_comparison(self, other):
         """
         Сравнение вакансий по зарплате
         :return:
         """
-        return self.salary > other.salary
+        pass
