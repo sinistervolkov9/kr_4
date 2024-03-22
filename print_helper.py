@@ -8,7 +8,6 @@ class PrintHelper:
     """
 
     def __init__(self, data):
-        self.run = True
         self.data = data
         self.vac_on_page = 5  # Кол-во вакансий на одной странице
         self.page_num = 1  # Вспомогательная. Номер страницы
